@@ -511,7 +511,7 @@ border-radius: 1px;</string>
       <rect>
        <x>150</x>
        <y>100</y>
-       <width>111</width>
+       <width>80</width>
        <height>24</height>
       </rect>
      </property>
@@ -519,11 +519,40 @@ border-radius: 1px;</string>
       <string/>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 12px;
+      <string notr="true">font: 10px;
 font-weight: bold;</string>
      </property>
      <property name="text">
       <string>Insert Tab</string>
+     </property>
+     <property name="autoExclusive">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="quickInsertBkspBtn">
+     <property name="geometry">
+      <rect>
+       <x>235</x>
+       <y>100</y>
+       <width>72</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="whatsThis">
+      <string/>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 10px;
+font-weight: bold;</string>
+     </property>
+     <property name="text">
+      <string>Insert Bksp</string>
      </property>
      <property name="autoExclusive">
       <bool>false</bool>
@@ -554,17 +583,17 @@ font-weight: bold;</string>
     <widget class="QPushButton" name="quickClearBtn">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>307</x>
        <y>100</y>
-       <width>85</width>
-       <height>25</height>
+       <width>48</width>
+       <height>24</height>
       </rect>
      </property>
      <property name="whatsThis">
       <string/>
      </property>
      <property name="styleSheet">
-      <string notr="true">font: 12px;
+      <string notr="true">font: 10px;
 font-weight: bold;</string>
      </property>
      <property name="text">
