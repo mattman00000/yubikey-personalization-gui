@@ -40,9 +40,9 @@ UsScanEdit::UsScanEdit() {
     keyMap[0x05] = 0;
     keyMap[0x06] = 0;
     keyMap[0x07] = 0;
-    keyMap[0x08] = 0;
-    keyMap[0x09] = 0x2b; /* \t */
-    keyMap[0x0a] = 0x28; /* \n */
+    keyMap[0x08] = 0x2a; /* \b backspace */
+    keyMap[0x09] = 0x2b; /* \t tab */
+    keyMap[0x0a] = 0x28; /* \n enter (LF) */
     keyMap[0x0b] = 0;
     keyMap[0x0c] = 0;
     keyMap[0x0d] = 0;
