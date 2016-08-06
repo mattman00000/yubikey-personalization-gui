@@ -31,7 +31,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 void TestScanEdit::testCharacters() {
   ScanEdit edit = UsScanEdit();
-  QString characters = "abcdefghijklmnopqrstuvwxyz1234567890\\n\\t -=[]\\\\;'`,./";
+  QString characters = "abcdefghijklmnopqrstuvwxyz1234567890\\n\\t\\b -=[]\\\\;'`,./";
   QString scancodes = edit.textToScanCodes(characters);
   QString result = edit.scanCodesToText(scancodes);
   QCOMPARE(result, characters);

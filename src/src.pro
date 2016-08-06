@@ -223,15 +223,15 @@ win32 {
     LIB_FILES_WIN = $${LIB_FILES}
     TARGET_DIR_WIN = $${DESTDIR}
     for(FILE, LIB_FILES_WIN) {
-        QMAKE_POST_LINK +=$$quote($$QMAKE_COPY $${FILE} $${TARGET_DIR_WIN}$$escape_expand(\\n\\t))
+        QMAKE_POST_LINK +=$$quote($$QMAKE_COPY $${FILE} $${TARGET_DIR_WIN}$$escape_expand(\\b\\n\\t))
     }
     LICENSE_DIR = $${TARGET_DIR_WIN}$${DIR_SEPARATOR}licenses
-    QMAKE_POST_LINK += $$quote($$QMAKE_MKDIR $${LICENSE_DIR}$$escape_expand(\\n\\t))
+    QMAKE_POST_LINK += $$quote($$QMAKE_MKDIR $${LICENSE_DIR}$$escape_expand(\\b\\n\\t))
     BASEDIR = ..$${DIR_SEPARATOR}libs$${DIR_SEPARATOR}win32$${DIR_SEPARATOR}licenses$${DIR_SEPARATOR}
     for(FILE, LICENSEFILES) {
-        QMAKE_POST_LINK += $$quote($$QMAKE_COPY $${BASEDIR}$${FILE} $${LICENSE_DIR}$$escape_expand(\\n\\t))
+        QMAKE_POST_LINK += $$quote($$QMAKE_COPY $${BASEDIR}$${FILE} $${LICENSE_DIR}$$escape_expand(\\b\\n\\t))
     }
-    QMAKE_POST_LINK += $$quote($$QMAKE_COPY ..$${DIR_SEPARATOR}COPYING $${LICENSE_DIR}$${DIR_SEPARATOR}yubikey-personalization-gui.txt$$escape_expand(\\n\\t))
+    QMAKE_POST_LINK += $$quote($$QMAKE_COPY ..$${DIR_SEPARATOR}COPYING $${LICENSE_DIR}$${DIR_SEPARATOR}yubikey-personalization-gui.txt$$escape_expand(\\b\\n\\t))
     sign_binaries {
         isEmpty(CERT_FILE) {
             error("Must have a cert file to sign (CERT_FILE env variable).")
@@ -243,15 +243,15 @@ win32 {
             libykpers-1-1.dll
 
         for(FILE, SIGN_FILES) {
-            QMAKE_POST_LINK += $$quote("osslsigncode sign -pkcs11engine /usr/lib/engines/engine_pkcs11.so -pkcs11module /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so -key slot_1-id_2 -certs $${CERT_FILE} -h sha256 -comm -t $${TIMESTAMP_URL} -n '$${APP_NAME}' -i 'https://www.yubico.com' $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${FILE} $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${FILE}-sign"$$escape_expand(\\n\\t))
-            QMAKE_POST_LINK += $$quote("mv $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${FILE}-sign $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${FILE}"$$escape_expand(\\n\\t))
+            QMAKE_POST_LINK += $$quote("osslsigncode sign -pkcs11engine /usr/lib/engines/engine_pkcs11.so -pkcs11module /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so -key slot_1-id_2 -certs $${CERT_FILE} -h sha256 -comm -t $${TIMESTAMP_URL} -n '$${APP_NAME}' -i 'https://www.yubico.com' $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${FILE} $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${FILE}-sign"$$escape_expand(\\b\\n\\t))
+            QMAKE_POST_LINK += $$quote("mv $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${FILE}-sign $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${FILE}"$$escape_expand(\\b\\n\\t))
         }
     }
     build_installer {
-        QMAKE_POST_LINK += $$quote("makensis -DYKPERS_VERSION=$${VERSION} ../installer/win-nsis/ykpers.nsi"$$escape_expand(\\n\\t))
+        QMAKE_POST_LINK += $$quote("makensis -DYKPERS_VERSION=$${VERSION} ../installer/win-nsis/ykpers.nsi"$$escape_expand(\\b\\n\\t))
         sign_binaries {
-            QMAKE_POST_LINK += $$quote("osslsigncode sign -pkcs11engine /usr/lib/engines/engine_pkcs11.so -pkcs11module /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so -key slot_1-id_2 -certs $${CERT_FILE} -h sha256 -comm -t $${TIMESTAMP_URL} -n '$${APP_NAME} Installer' -i 'https://www.yubico.com' $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${TARGET}-$${VERSION}.exe $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${TARGET}-$${VERSION}.exe-sign"$$escape_expand(\\n\\t))
-            QMAKE_POST_LINK += $$quote("mv $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${TARGET}-$${VERSION}.exe-sign $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${TARGET}-$${VERSION}.exe"$$escape_expand(\\n\\t))
+            QMAKE_POST_LINK += $$quote("osslsigncode sign -pkcs11engine /usr/lib/engines/engine_pkcs11.so -pkcs11module /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so -key slot_1-id_2 -certs $${CERT_FILE} -h sha256 -comm -t $${TIMESTAMP_URL} -n '$${APP_NAME} Installer' -i 'https://www.yubico.com' $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${TARGET}-$${VERSION}.exe $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${TARGET}-$${VERSION}.exe-sign"$$escape_expand(\\b\\n\\t))
+            QMAKE_POST_LINK += $$quote("mv $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${TARGET}-$${VERSION}.exe-sign $${TARGET_DIR_WIN}$${DIR_SEPARATOR}$${TARGET}-$${VERSION}.exe"$$escape_expand(\\b\\n\\t))
         }
     }
 }

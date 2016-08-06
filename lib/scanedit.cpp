@@ -45,6 +45,9 @@ QString ScanEdit::textToScanCodes(const QString text) {
                 QChar next = text.at(i + 1);
                 if(next == '\\') {
                     i++;
+                } else if(next == 'b') {
+                    i++;
+                    ch = '\b';
                 } else if(next == 't') {
                     i++;
                     ch = '\t';
@@ -72,6 +75,7 @@ QString ScanEdit::scanCodesToText(const QString scanCode) {
         if(ok == true) {
             QString key;
             key += keyMap.key(code, 0);
+            if(key == "\b") key = "\\b";
             if(key == "\n") key = "\\n";
             if(key == "\t") key = "\\t";
             if(key == "\\") key = "\\\\";
