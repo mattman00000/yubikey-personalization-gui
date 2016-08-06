@@ -369,6 +369,13 @@ void StaticPage::on_quickInsertTabBtn_clicked() {
     on_quickStaticTxt_textEdited(text);
 }
 
+void StaticPage::on_quickInsertBkspBtn_clicked() {
+    QString text = ui->quickStaticTxt->text() + "\\b";
+    ui->quickStaticTxt->setText(text);
+    ui->quickStaticTxt->setFocus();
+    on_quickStaticTxt_textEdited(text);
+}
+
 void StaticPage::on_quickClearBtn_clicked() {
     ui->quickScanCodesTxt->clear();
     ui->quickStaticTxt->clear();
